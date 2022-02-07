@@ -82,9 +82,7 @@ class KeychainWrapper {
         var keychainQueryDictionary: [String: Any] = [kSecClass as String: kSecClassGenericPassword]
         keychainQueryDictionary[kSecAttrService as String] = Bundle.main.bundleIdentifier!
 
-        if let encodedKey = key.data(using: .utf8) {
-            keychainQueryDictionary[kSecAttrAccount as String] = encodedKey
-        }
+        keychainQueryDictionary[kSecAttrAccount as String] = key
 
         return keychainQueryDictionary
     }
